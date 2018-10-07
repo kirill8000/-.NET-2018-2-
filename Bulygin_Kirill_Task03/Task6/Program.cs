@@ -9,12 +9,6 @@ namespace Task6
 {
     class Program
     {
-        enum Format
-        {
-            Numeric,
-            Exponential,
-            None
-        }
         static void PrintFormat(string input)
         {
             if (Regex.IsMatch(input, @"^-?\d+[\.,]?\d*$"))
