@@ -9,8 +9,7 @@ namespace Task1
 {
     class Program
     {
-        static double AverageLength(string[] words) => words.Average(s => s.Length);
-        static string TrimString(string s) => Regex.Replace(s, "[\\W]", " ");
+        static string[] SplitString(string s) => Regex.Split(s, @"\W");
 
         static void Main(string[] args)
         {
@@ -19,7 +18,7 @@ namespace Task1
             var average = 0.0;
             if (s != string.Empty)
             {
-                average = AverageLength(TrimString(s).Split(new []{' '}, StringSplitOptions.RemoveEmptyEntries));
+                average = SplitString(s).Average(s1 => s1.Length);
             }
             Console.WriteLine($"Средняя длина слова в строке: {average}");
         }
