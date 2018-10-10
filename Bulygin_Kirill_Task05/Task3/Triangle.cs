@@ -8,9 +8,9 @@ namespace Task3
 {
     class Triangle
     {
-        public double A { get; private set; }
-        public double B { get; private set; }
-        public double C { get; private set; }
+        public double A { get; }
+        public double B { get; }
+        public double C { get; }
         public double Perimeter => A + B + C;
         public double Square 
             => Math.Sqrt((Perimeter / 2) * ((Perimeter / 2) - A) * ((Perimeter / 2) - B) * ((Perimeter / 2) - C)); //Heron's formula

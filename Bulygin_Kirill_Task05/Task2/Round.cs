@@ -16,7 +16,7 @@ namespace Task2
             get => _radius;
             set
             {
-                if(value < 0)
+                if(value <= 0)
                 {
                     throw new ArgumentException("Radius must be positive");
                 }

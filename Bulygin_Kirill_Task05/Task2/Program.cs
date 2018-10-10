@@ -17,7 +17,7 @@ namespace Task2
             return ReadDouble(d => true);
         }
 
-        static double ReadDouble(Func<double ,bool> predicate)
+        static double ReadDouble(Func<double, bool> predicate)
         {
             var culture = CultureInfo.CurrentCulture;
             double n;
