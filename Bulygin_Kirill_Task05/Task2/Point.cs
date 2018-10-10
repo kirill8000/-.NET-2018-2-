@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace Task2
 {
-    class Point
+    struct Point
     {
+        public double X;
+        public double Y;
+
+        public Point(double x, double y)
+        {
+            X = x;
+            Y = y;
+        }
     }
 }

@@ -10,6 +10,14 @@ namespace Task1
     {
         static void Main(string[] args)
         {
+            var user = new User()
+            {
+                DateOfBirth = new DateTime(1999, 08, 16),
+                Name = "Василий",
+                Patronymic = "Владимирович",
+                Surname = "Петров"
+            };
+            Console.WriteLine(user);
         }
     }
 }
