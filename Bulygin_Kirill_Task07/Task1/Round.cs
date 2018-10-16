@@ -14,9 +14,9 @@ namespace Task1
         {
         }
 
-        public override void Draw()
+        public override void Draw(ICanvas canvas)
         {
-            Console.WriteLine($"Round R = {Radius} {nameof(Length)} = {Length} {nameof(Square)} = {Square}");
+            canvas.DrawRound(Point, Radius);
         }
 
         public override void Move(int horizontal, int vertical)

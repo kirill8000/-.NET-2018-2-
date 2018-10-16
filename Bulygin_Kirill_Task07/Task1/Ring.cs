@@ -27,9 +27,11 @@ namespace Task1
         public double Length => _round.Length + _inRound.Length;
 
         public Point Center => Point;
-        public override void Draw()
+        public override void Draw(ICanvas canvas)
         {
-            Console.WriteLine($"Ring Center {Point}. Inner radius {_inRound.Radius}. Out radius {_round.Radius}. Length {_inRound.Length} {_round.Length}. Square {Square}.");
+            canvas.DrawRound(Center, _inRound.Radius);
+            canvas.DrawRound(Point, _round.Radius);
+            //Console.WriteLine($"Ring Center {Point}. Inner radius {_inRound.Radius}. Out radius {_round.Radius}. Length {_inRound.Length} {_round.Length}. Square {Square}.");
         }
 
         public override void Move(int horizontal, int vertical)

@@ -9,9 +9,10 @@ namespace Task1
         public double Length 
             => Math.Sqrt(Math.Pow(Point.X - _secondPoint.X, 2) + Math.Pow(Point.Y - _secondPoint.Y, 2));
 
-        public override void Draw()
+        public override void Draw(ICanvas canvas)
         {
-            Console.WriteLine($"Line Point 1 {Point} Point 2 {_secondPoint}. Length {Length}");
+            canvas.DrawLine(Point, _secondPoint);
+            
         }
 
         public override void Move(int horizontal, int vertical)

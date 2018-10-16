@@ -4,10 +4,10 @@
     {
         public int XP { get; private set; }
         public int Score { get; set; }
-        public void ToDamage(int xp)
+        public void ToDamage(Monster monster)
         {
-            if (XP <= xp) XP = 0;
-            XP -= xp;
+            if (XP <= monster.Damage) XP = 0;
+            XP -= monster.Damage;
         }
         public MainCharacter(Map world, Point position) : base(world, position)
         {

@@ -10,6 +10,7 @@ namespace Task1
     {
         static void Main(string[] args)
         {
+            VectorEditor editor = new VectorEditor(new ConsoleCanvas());
             var shapes = new List<Shape>
             {
                 new Rectangle(new Point(10, 10), new Point(10, 20)),
@@ -18,10 +19,8 @@ namespace Task1
                 new Ring(new Point(12, 12), 10, 12),
                 new Circle(new Point(12, 12), 11)
             };
-            foreach (var shape in shapes)
-            {
-                shape.Draw();
-            }
+            editor.AddShapesRange(shapes);
+            editor.Render();
         }
     }
 }

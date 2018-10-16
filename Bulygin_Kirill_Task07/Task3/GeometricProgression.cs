@@ -35,10 +35,10 @@ namespace Task3
             get
             {
                 if(index < 1)
-                    throw new ArgumentException("Index should be positive");
+                    throw new ArgumentOutOfRangeException("Index should be positive");
                 return _start * Math.Pow(_ratio, _currentIndex - 1);
             }
         }
     }
 }
-}
+

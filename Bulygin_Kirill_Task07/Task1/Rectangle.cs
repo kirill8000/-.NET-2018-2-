@@ -16,9 +16,9 @@ namespace Task1
             _secondPoint = point2;
         }
         
-        public override void Draw()
+        public override void Draw(ICanvas canvas)
         {
-            Console.WriteLine($"Rectangle A = {A} B = {B} Square = {Square}");
+            canvas.DrawRectangle(Point, _secondPoint);
         }
 
         public override void Move(int horizontal, int vertical)

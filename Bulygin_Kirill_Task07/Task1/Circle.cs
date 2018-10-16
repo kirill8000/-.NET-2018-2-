@@ -28,9 +28,9 @@ namespace Task1
             Radius = radius;
         }
 
-        public override void Draw()
+        public override void Draw(ICanvas canvas)
         {
-            Console.WriteLine($"Circle R = {Radius} {nameof(Length)} = {Length}");
+            canvas.DrawRound(Center, Radius);
         }
 
         public override void Move(int horizontal, int vertical)
