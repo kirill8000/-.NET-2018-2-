@@ -8,10 +8,22 @@ namespace Task1
 {
     class User
     {
+        private DateTime _dateOfBirth;
         public string Surname { get; set; }
         public string Name { get; set; }
         public string Patronymic { get; set; }
-        public DateTime DateOfBirth { get; set; }
+
+        public DateTime DateOfBirth
+        {
+            get => _dateOfBirth;
+            set
+            {
+                var now = DateTime.Now;
+                if(value > now)
+                    throw new ArgumentException("Age must be positive");
+                _dateOfBirth = value;
+            }
+        }
 
         public int Age
         {

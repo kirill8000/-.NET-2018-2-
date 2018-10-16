@@ -19,6 +19,8 @@ namespace Task3
         {
             if(a <= 0 || b <= 0 || c <= 0)
                 throw new ArgumentException("Side must be positive");
+            if(a + b <= c || c + b <= a || a + c <= b)
+                throw new ArgumentException("Invalid sides");
             A = a;
             B = b;
             C = c;

@@ -20,10 +20,8 @@ namespace Task2
                 {
                     throw new ArgumentException("Radius must be positive");
                 }
-                else
-                {
-                    _radius = value;
-                }
+
+                _radius = value;
             }
         }
 
