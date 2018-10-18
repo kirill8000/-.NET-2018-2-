@@ -20,7 +20,8 @@ namespace Task3
                 }
                 Console.WriteLine();
             };
-            s.SortAsync(ar, (i, i1) => i.CompareTo(i1)).Wait();
+            s.SortAsync(ar, (i, i1) => i.CompareTo(i1));
+            Thread.Sleep(5000);
         }
     }
 }

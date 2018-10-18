@@ -27,8 +27,8 @@ namespace Task1
         protected int YearsCountFrom(DateTime date)
         {
             var today = DateTime.Today;
-            var y = today.Year - DateOfBirth.Year;
-            if (DateOfBirth > today.AddYears(-y)) y--;
+            var y = today.Year - date.Year;
+            if (date > today.AddYears(-y)) y--;
             return y;
         }
         public string Surname

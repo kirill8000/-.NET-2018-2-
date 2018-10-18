@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Contracts;
 
 namespace Task1
 {
@@ -9,9 +10,10 @@ namespace Task1
     {
         private const int DefaultCapacity = 8;
         private T[] _array;
-        private int _length = 0;
+        private int _length;
         public int Count => _length;
         public bool IsReadOnly => false;
+        public int Capacity => _array.Length;
 
         private void Resize(int capacity)
         {
@@ -21,18 +23,11 @@ namespace Task1
             _array = tempAr;
         }
 
-        private int GetIndex(T item)
+        private void CheckBound(int index)
         {
-            for (int i = 0; i < _length; i++)
-            {
-                if (item.Equals(_array[i]))
-                    return i;
-            }
-
-            return -1;
+            if (index < 0 || index >= _length)
+                throw new ArgumentOutOfRangeException();
         }
-
-        public int Capacity => _array.Length;
 
         public DynamicArray()
         {
@@ -52,6 +47,13 @@ namespace Task1
             }
         }
 
+        public DynamicArray(T[] array)
+        {
+            _array = new T[array.Length];
+            Array.Copy(array, _array, array.Length);
+            _length = array.Length;
+        }
+
         public IEnumerator<T> GetEnumerator()
         {
             for (int i = 0; i < _length; i++)
@@ -67,9 +69,7 @@ namespace Task1
 
         public void Add(T item)
         {
-            if(_length == _array.Length)
-                Resize(_array.Length * 2);
-            _array[_length++] = item;
+            Insert(_length, item);
         }
 
         public void Clear()
@@ -79,7 +79,7 @@ namespace Task1
 
         public bool Contains(T item)
         {
-            return GetIndex(item) != -1;
+            return IndexOf(item) != -1;
         }
 
         public void CopyTo(T[] array, int arrayIndex)
@@ -89,7 +89,7 @@ namespace Task1
 
         public bool Remove(T item)
         {
-            int i = GetIndex(item);
+            int i = IndexOf(item);
             if (i == -1)
                 return false;          
             RemoveAt(i);
@@ -108,35 +108,28 @@ namespace Task1
 
         public int IndexOf(T item)
         {
-            return GetIndex(item);
+            return Array.IndexOf(_array, item, 0, _length);
         }
 
         public void Insert(int index, T item)
         {
-            if (index < 0 || index > _length)
-            {
+            if((index < 0) || (index > _length))
                 throw new ArgumentOutOfRangeException();
-            }
 
-            if (index == _length)
-            {
-                Add(item);
-                return;
-            }
+            if (_length == Capacity)
+                Resize(_length * 2);
 
-            Add(_array[_length - 1]);
-            for (int i = _length - 2; i > index; i--)
+            for (int i = _length; i > index; i--)
             {
                 _array[i] = _array[i - 1];
             }
-
             _array[index] = item;
+            _length++;
         }
 
         public void RemoveAt(int index)
         {
-            if (index < 0 || index >= _length)
-                throw new ArgumentOutOfRangeException("Argument out of range");
+            CheckBound(index);
             for (int j = index + 1; j < _length; j++)
             {
                 _array[j - 1] = _array[j];
@@ -156,15 +149,10 @@ namespace Task1
         {
             get
             {
-                if(index < 0 || index >= _length)
-                    throw new ArgumentOutOfRangeException("Argument out of range");
+                CheckBound(index);
                 return _array[index];
             }
-            set
-            {
-                var t = this[index];
-                _array[index] = value;
-            }
+            set => _array[index] = value;
         }
     }
 }

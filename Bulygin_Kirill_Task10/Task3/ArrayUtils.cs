@@ -35,7 +35,6 @@ namespace Task3
         {
             await Task.Run(() =>
             {
-                Debug.WriteLine(Thread.CurrentThread.GetHashCode());
                 Sort(ar, comparer);
             });
             SortComplete?.Invoke(this, new EventArgs());
