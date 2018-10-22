@@ -11,6 +11,10 @@ namespace Task1
         static void Main(string[] args)
         {
             var array = new DynamicArray<int>() {1, 2, 3, 4, 5};
+            for (int i = 0; i < 122; i++)
+            {
+                array.Add(1);
+            }
             array.Add(11);
             array.Insert(0, 0);
             foreach (var i in array)
